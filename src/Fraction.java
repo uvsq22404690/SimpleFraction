@@ -28,4 +28,9 @@ public class Fraction {
         return fraction1+fraction2;
 
     }
+
+    @Override
+    public String toString() {
+        return "Je suis une fraction.";
+    }
 }

@@ -9,7 +9,7 @@ public class Main {
         PrintStream printf = System.out.printf("Hello and welcome!");
         // Fraction 1
         double numerateur1 = 1;
-        double denominateur1 = 0;
+        double denominateur1 = 3;
         assert denominateur1 != 0 : "Le dénominateur ne peut pas être zéro.";
         // Fraction 2
         double numerateur2 = 5;
@@ -17,9 +17,8 @@ public class Main {
         assert denominateur2 != 0 : "Le dénominateur ne peut pas être zéro.";
 
         Fraction fraction = new Fraction(numerateur1,denominateur1);
-        System.out.printf("La multiplication des deux fractions est : "+fraction.multiply(numerateur2,denominateur2)+"\n");
-        System.out.printf("L'addition des deux fractions est : "+fraction.addition(numerateur2,denominateur2));
 
+        System.out.printf(fraction.toString());
 
 
 
