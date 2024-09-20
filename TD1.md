@@ -107,7 +107,7 @@ bin/
     ```
 1. Retirez les fichiers de configuration de l'IDE du projet;
     ```bash
-    # Les fichiers config de lIDE ont bien été supprimer (.idea)
+     Les fichiers config de lIDE ont bien été supprimer (.idea)
     ```
     Ajoutez-les aux fichiers ignorés par `git`.
     ```bash
@@ -117,6 +117,8 @@ bin/
     ```
 1. Configurez l'accès par clé publique/clé privée à la forge (cf. [Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)).
     > Expliquez la procédure de façon synthétique
+A)Pour configurer l'accès par clé publique/privée à la forge, on commence par exécuter la commande fournie par GitHub : ssh-keygen -t rsa -b 4096 -C "riadnamane@gmail.com". Cette commande génère une clé publique et une clé privée pour notre compte GitHub, en utilisant l'adresse email que nous avons choisie.
+B) Pour configurer la clé SSH, on commence par se rendre sur la forge et accéder aux paramètres. Ensuite, on va dans la section SSH and GPG keys et on clique sur New SSH Key. On doit alors copier le contenu de notre clé publique depuis notre fichier .ssh, puis le coller dans le champ prévu sur la forge. Cette étape permet d'établir une connexion sécurisée entre notre machine et notre compte.
 
 ## Partie II (à faire durant le TD) : compléter la classe `Fraction`
 Dans cet partie, vous compléterez les classes `Fraction` et `Main`.
@@ -129,37 +131,63 @@ Vous respecterez les consignes ci-dessous :
 1. Ajoutez les attributs représentants le numérateur et le dénominateur (nombres entiers).
     ```Java
     // Déclaration des attributs
+    public class Fraction {
+        private int numerateur;
+        private int denominateur;
+    }
     ```
 1. Ajoutez les constructeurs (cf. [Constructor Declarations](https://docs.oracle.com/javase/specs/jls/se19/html/jls-8.html#jls-8.8)) suivants :
     * initialisation avec un numérateur et un dénominateur,
     * initialisation avec juste le numérateur (dénominateur égal à _1_),
     * initialisation sans argument (numérateur égal _0_ et dénominateur égal à _1_),
     ```Java
+    // Création des objets
+    Fraction fraction1 = new Fraction(1,2);
+    Fraction fraction2 = new Fraction(3);
+    Fraction fraction3 = new Fraction();
     // Assertions pour tester les constructeurs (avec toString)
+    assert fraction1.toString().equals(fraction2.toString()):"erreur du constructeur";
+    assert fraction2.toString().equals(fraction3.toString()):"erreur du constructeur";
     ```
 1. Ajoutez les fractions constantes ZERO (0, 1) et UN (1, 1) (cf. [Constants in Java](https://www.baeldung.com/java-constants-good-practices)),
     ```Java
     // Déclaration des constantes
+    //Constantes
+        final Fraction  fraction4 = new Fraction(0,1);
+        final Fraction  fraction5 = new Fraction(1,1);
     ```
 1. Ajoutez une méthode de consultation du numérateur et du dénominateur (par convention, en Java, une méthode retournant la valeur de l'attribut `anAttribute` est nommée `getAnAttribute`),
     ```Java
     // Définition des getters
+     public int getDenominateur() {
+        return this.denominateur;
+    }
+    public int getNumerateur(){
+        return this.numerateur;
+    }
     ```
 1. Ajoutez une méthode de consultation de la valeur sous la forme d'un nombre en virgule flottante (méthode `doubleValue()`) (cf. [`java.lang.Number`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Number.html)),
    ```Java
     // Assertions pour tester la conversion
+     assert fraction5.doubleValue()== 1.0:"La valeur n'a pas été convertie correctement";
+     assert fraction4.doubleValue()== 0.0:"La valeur n'a pas été convertie correctement";
+
     ```
 1. Ajoutez une méthode permettant l'addition de deux fractions (la méthode `add` prend en paramètre *une* fraction et *retourne* la somme de la fraction courante et du paramètre),
    ```Java
     // Assertions pour tester l'addition
+    assert fraction5.add(fraction4)==1.0:"L'addition est incorrecte";
+
     ```
 1. Ajoutez le test d'égalité entre fractions (deux fractions sont égales si elles représentent la même fraction réduite) (cf. [`java.lang.Object.equals`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object))),
    ```Java
     // Assertions pour tester l'égalité
+    assert fraction5.equals(fraction4):"Les fractions ne sont pas égales";
     ```
 1. Ajoutez la comparaison de fractions selon l'ordre naturel (cf. [`java.lang.Comparable`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Comparable.html)).
    ```Java
     // Assertions pour tester la comparaison
+    assert fraction5.compareTo(fraction4)==0; 
     ```
 1. Faites hériter votre classe `Fraction` de la classe [`java.lang.Number`](https://docs.oracle.com/en/java/javase/19/docs/api/java.base/java/lang/Number.html) et complétez les méthodes
    ```Java
@@ -167,6 +195,20 @@ Vous respecterez les consignes ci-dessous :
     Number aNumber = java.math.BigDecimal.ONE;
     Number anotherNumber = new Fraction(1, 2);
     assert java.lang.Math.abs(aNumber.doubleValue() + anotherNumber.doubleValue() - 1.5) < 1E-8;
+    
+
+    # On hérite la classe Fraction de java.lang.Number graçe a cette ligne de code : public class Fraction extends java.lang.Number{} en implementant les differentes methodes abstract de cette classe:  
+    public int intValue(){
+        return this.numerateur / this.denominateur;
+    }
+    public long longValue(){
+        return (long) this.numerateur / this.denominateur;
+    }
+    public float floatValue(){
+        return (float) this.numerateur / this.denominateur;
+    }
+
+    en copiant le bloque de code qui nous a été fournie en le collant dans main notre code run parfaitement 
     ```
 
 ## Partie III (à faire à la maison) : révisions et perfectionnement *shell* et *IDE*
@@ -176,36 +218,48 @@ Vous pouvez répondre en utilisant le shell de votre choix (*bash*, *Powershell*
 Pour répondre à ces questions, vous devez effectuer les recherches documentaires adéquates (livre, web, …).
 
 1. Quel OS et quel shell de commande utilisez-vous ?
-    > Répondre ici
+    > Command prompt pour le shell et windows 11 pour l'OS
 1. Quelle commande permet d'obtenir de l'aide ?
 Donnez un exemple.
     ```bash
-    # Répondre ici
+    # la commande est help, un exemple on peut utiliser help copy qui affiche les détails de cette commande ainsi que des examples sur comment l'utiliser
     ```
 1. Donnez la ou les commandes shell permettant de
     1. afficher les fichiers d'un répertoire triés par taille (taille affichée lisiblement)
         ```bash
-        # Répondre ici
+        La commande dir /S /O:S /-C permet de trier et dafficher la taille des fichiers dans un dossier, en naviguant vers son chemin à partir de linvite de commandes.
         ```
     1. compter le nombre de ligne d'un fichier
         ```bash
-        # Répondre ici
+        dans notre cas de projet pour si on veut compter le nombre de lignes dans notre README File on utilise la commande suivante:
+
+        C:\Users\riadn\IdeaProjects\TD1_22404690>find /c /v "" README.md
         ```
     1. afficher les lignes du fichier `Main.java` contenant la chaîne `uneVariable`
         ```bash
-        # Répondre ici
+        Dans le cas de notre projet on doit se rendre sur le fichier puis src où on trouve le main.java ensuite on prend le chemin dans notre command prompt, une fois dedans on utilise cette commande pour trouver par example où et quand a été "uneVariable" utiliser
+
+        C:\Users\riadn\IdeaProjects\TD1_22404690\src>findstr "uneVariable" Main.java
         ```
     1. afficher récursivement les fichiers `.java` contenant la chaîne `uneVariable`
         ```bash
-        # Répondre ici
+        Pour trouver les fichiers .java ou uneVariable a été utiliser on utilise la commande suivante:
+        findstr /S /M "uneVariable" *.java 
+
         ```
     1. trouver les fichiers (pas les répertoires) nommés `README.md` dans une arborescence de répertoires
         ```bash
-        # Répondre ici
+        On utilise cette commande: dir /S /B README.md où elle retourne tout les chemins où se trouve tout les fichiers README.md 
+
         ```
     1. afficher les différences entre deux fichiers textes
         ```bash
-        # Répondre ici
+        Pour afficher les différences entre deux fichier textes on accèdes au chemin du fichier depuis la command prompt où on utilise la commande FC pour faire differente comparaisons
+        fc fichier1.txt fichier2.txt      #afficher les difference 
+        fc /C fichier1.txt fichier2.txt   #comparer fichier 
+        fc /B fichier1.txt fichier2.txt   #binaire comparaison
+
+
         ```
 1. Expliquez en une ou deux phrases le rôle de ces commandes et dans quel contexte elles peuvent être utiles pour un développeur.
     * `ssh`
