@@ -1,6 +1,5 @@
 # Compléments de programmation - TD 1
-Namane, Read, 22404690, 8
-     > Répondre ici
+     > Namane, Read, 22404690, 8
 ## Remarques préliminaires
 * Pour l'ensemble des TDs, vous créerez un compte individuel sur [github](https://github.com/) si vous n'en possédez pas déjà un.
 Vous nommerez ce compte de la façon suivante: `uvsq<MonNuméroÉtudiant>`.
