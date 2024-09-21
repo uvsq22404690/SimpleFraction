@@ -249,27 +249,27 @@ Donnez un exemple.
         ```
     1. trouver les fichiers (pas les répertoires) nommés `README.md` dans une arborescence de répertoires
         ```bash
-        On utilise cette commande: dir /S /B README.md où elle retourne tout les chemins où se trouve tout les fichiers README.md 
+        On utilise cette commande: dir /S /B README.md qui retourne tout les chemins où se trouve tout les fichiers README.md 
 
         ```
     1. afficher les différences entre deux fichiers textes
         ```bash
         Pour afficher les différences entre deux fichier textes on accèdes au chemin du fichier depuis la command prompt où on utilise la commande FC pour faire differente comparaisons
-        fc fichier1.txt fichier2.txt      #afficher les difference 
-        fc /C fichier1.txt fichier2.txt   #comparer fichier 
-        fc /B fichier1.txt fichier2.txt   #binaire comparaison
+        fc fichier1.txt fichier2.txt      #afficher les differences entre les fichiers
+        fc /C fichier1.txt fichier2.txt   #comparer les fichiers 
+        fc /B fichier1.txt fichier2.txt   #comparaison binaire 
 
 
         ```
 1. Expliquez en une ou deux phrases le rôle de ces commandes et dans quel contexte elles peuvent être utiles pour un développeur.
     * `ssh`
-        > Répondre ici
+        > La commande ssh (Secure Shell) permet de se connecter de manière sécurisée à un serveur distant via un réseau non sécurisé en utilisant le chiffrement. 
     * `screen`/`tmux`
-        > Répondre ici
+        > screen et tmux permettent de garder des sessions terminal actives après déconnexion et de gérer plusieurs fenêtres dans un seul terminal, utiles sur des serveurs distants.
     * `curl`/[HTTPie](https://httpie.org/)
-        > Répondre ici
+        > curl et HTTPie permettent d'envoyer des requêtes HTTP via la ligne de commande. curl est polyvalent et très utilisé pour tester des APIs, tandis qu'HTTPie est plus convivial, avec une syntaxe simplifiée pour interagir facilement avec les APIs REST.
     * [jq](https://stedolan.github.io/jq/)
-        > Répondre ici
+        > jq permet de manipuler et filtrer des données JSON en ligne de commande, utile pour traiter des réponses API ou des fichiers JSON.
 
 ### Découverte de votre *IDE*
 Dans cet exercice, vous expliquerez en quelques phrases comment vous réalisez les actions ci-dessous dans votre IDE.
@@ -277,28 +277,29 @@ Vous pouvez choisir l'IDE/éditeur de texte de votre choix.
 Pour réaliser cette exercice, vous devez bien évidemment vous reporter à la documentations de l'IDE ([IntelliJ IDEA](https://www.jetbrains.com/help/idea/discover-intellij-idea.html#developer-tools), [Visual Studio Code](https://code.visualstudio.com/docs), [Eclipse](https://help.eclipse.org/2020-09/index.jsp), …).
 
 1. Quels IDE ou éditeurs de texte utilisez-vous pour le développement Java ?
-    > Répondre ici
+    > Itellij IDEA Community Edition
 
     Pour la suite, ne considérez que l'un de vos choix.
 1. Comment vérifier/définir que l'encodage utilisé est *UTF-8* ?
-    > Répondre ici
+    > Dans Intellij Idea pour changer l'encodage d'un fichier spécifique il faut se rendre en bas a droite de la fenetre de l'editeur et faire UTF-8
+    pour definir l'encodage global du projet il faut aller dans file puis settings ensuite se rendre à file encodings  mettre global encoding UTF-8 comme ça tout les fichiers créer dans le projet utilisent l'encodage de UTF-8
 1. Comment choisir le JDK à utiliser dans un projet ?
-    > Répondre ici
+    > Il faut se rendre dans file puis project structure et choisir le JDK sous l'onglet projet on peut également ajouter un nouveau JDK en cliquant sur new pour installer un nouveau sur notre machine
 1. Comment préciser la version Java des sources dans un projet ?
-    > Répondre ici
+    > File -> Project structure -> Project -> SDK  dans notre cas on a Temurin-21 Eclipse Temurin 21.0.4
 1. Comment ajouter une bibliothèque externe dans un projet ?
-    > Répondre ici
+    > Pour ajouter une bibliothèque externe dans IntelliJ IDEA il suffira d'aller dans File > Project Structure > Libraries, cliquer sur add et puis selectionner Java pour ajouter un fichier Local JAR on choisit la bibliothéque qui sera incluse dans notre projet 
 1. Comment reformater un fichier source Java ?
-    > Répondre ici
+    > pour reformatier un fichier Java src il faudra ouvrir le fichier, allez dans Code > Reformat Code ou utilisez le raccourci Ctrl + Alt + L 
 1. Comment trouver la déclaration d'une variable ou méthode ?
-    > Répondre ici
+    > our trouver la déclaration d'une variable ou méthode dans IntelliJ IDEA, placez le curseur dessus et appuyez sur Ctrl + B 
 1. Comment insérer un bloc de code prédéfini (*snippet*) ?
-    > Répondre ici
+    > Pour insérer un bloc de code prédéfini (snippet) dans IntelliJ IDEA, on tape l'abréviation du snippet et on appuie sur Tab
 1. Comment renommer une classe dans l'ensemble du projet ?
-    > Répondre ici
+    > On utilise la fonctionnalité refactor en entrant le nouveau nom qu'on veut mettre pour tout les variables qui ont le même nom 
 1. Comment exécuter le programme en lui passant un paramètre en ligne de commande ?
-    > Répondre ici
+    > Pour exécuter un programme Java avec des paramètres dans IntelliJ IDEA, Il suffira d'aller dans Run > Edit Configurations,pui selectioner la configuration, on rentre les paramètres dans Program arguments, et on execute le programme.
 1. Comment déboguer le programme en visualisant le contenu d'une ou plusieurs variables ?
-    > Répondre ici
+    > Pour déboguer et voir la valeur d'une variable dans IntelliJ IDEA, il suffit de placer un point d'arrêt à la ligne souhaitée, de lancer le programme en mode débogage, puis de survoler la variable pour afficher sa valeur ou de jeter un œil au panneau Variables.
 1. Quels paramètres ou fonctionnalités vous semblent particulièrement importants/utiles pour le développement Java ?
-    > Répondre ici
+    > Pour le développement Java, des fonctionnalités comme la complétion de code, le refactoring, le débogage, l'intégration avec des systèmes de versionnage, la gestion des tests unitaires, la gestion des dépendances avec Maven ou Gradle, et l'analyse de code sont particulièrement utiles pour améliorer la productivité et la qualité du code.
