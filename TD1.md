@@ -1,5 +1,5 @@
 # Compléments de programmation - TD 1
-Nom, Prénom, No Etudiant, Nc
+Namane, Read, 22404690, 8
      > Répondre ici
 ## Remarques préliminaires
 * Pour l'ensemble des TDs, vous créerez un compte individuel sur [github](https://github.com/) si vous n'en possédez pas déjà un.
